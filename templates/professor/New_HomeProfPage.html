@@ -11,34 +11,57 @@
                     CT
                 </a>
                 <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    {{object.FirstName}}
-                    {{object.LastName}}
+                    Creative Tim
                 </a>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="active">
-                        <a onclick="window.location.href= '/professor/{{user.username}}'">
+                        <a href="../examples/dashboard.html">
                             <i class="now-ui-icons design_app"></i>
-                            <p>Current Courses</p>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a onclick="window.location.href= '/archiveCourseProfessor/{{user.username}}'">
-                            <i class="now-ui-icons education_atom"></i>
-                            <p>Archive Courses</p>
+                            <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
-                        <a onclick="window.location.href= '/CourseForm/'">
+                        <a href="../examples/icons.html">
+                            <i class="now-ui-icons education_atom"></i>
+                            <p>Icons</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../examples/map.html">
                             <i class="now-ui-icons location_map-big"></i>
-                            <p>Add a Course</p>
+                            <p>Maps</p>
                         </a>
                     </li>
                     <li>
                         <a href="../notifications.html">
                             <i class="now-ui-icons ui-1_bell-53"></i>
-                            <p>Edit Courses</p>
+                            <p>Notifications</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../examples/user.html">
+                            <i class="now-ui-icons users_single-02"></i>
+                            <p>User Profile</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../examples/tables.html">
+                            <i class="now-ui-icons design_bullet-list-67"></i>
+                            <p>Table List</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../examples/typography.html">
+                            <i class="now-ui-icons text_caps-small"></i>
+                            <p>Typography</p>
+                        </a>
+                    </li>
+                    <li class="active-pro">
+                        <a href="../examples/upgrade.html">
+                            <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                            <p>Upgrade to PRO</p>
                         </a>
                     </li>
                 </ul>
@@ -47,87 +70,269 @@
 {% endblock %}
 
 {% block title %}
-
+<a class="navbar-brand" href="#pablo">salam List</a>
 {% endblock %}
 
 {% block body%}
 
-        <!-- Editable table -->
-<section class="p-t-20">
-    <div class="container">
-
-        <div class="card">
-          <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Your Current Courses</h3>
-          <div class="card-body">
-            <div id="table" class="table-editable">
-              <span class="table-add float-right mb-3 mr-2"><a onclick="window.location.href = '/CourseForm/'" class="text-success"><i
-                      class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
-              <table contenteditable="true" class="table table-bordered table-responsive-md table-striped text-center">
-                <thead>
-                  <tr>
-                    <th class="text-center">Course Name</th>
-                    <th class="text-center">Course ID</th>
-                    <th class="text-center">Group ID</th>
-                    <th class="text-center">Professor Name</th>
-                    <th class="text-center">Status</th>
-                    <th class="text-center">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                 {% for i in object.course_set.all %}
-                 {% if i.Status == 'active' %}
-                  <tr>
-                    <td class="pt-3-half" contenteditable="true">{{i.Name}}</td>
-                    <td class="pt-3-half" contenteditable="true">{{i.CourseID}}</td>
-                    <td class="pt-3-half" contenteditable="true">{{i.GroupID}}</td>
-                    <td class="pt-3-half" contenteditable="true">
-                        {% for j in i.Professor.all %}
-                        {{ j.FirstName }}  {{ j.LastName }}
-                          <p></p>
-                        {% endfor %}
-                    </td>
-                    <td class="pt-3-half" contenteditable="true">{{i.Status}}</td>
-                    <td>
-                            <div class="text-center">
-        <button class="btn btn-danger btn-sm btn-rounded buttonDelete" data-toggle="modal" data-target="#modalDelete"
-        >Remove<i class="fas fa-times ml-1"></i></button>
-    </div>
-                        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold ml-5 text-danger">Remove</h4>
-            <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body mx-3">
-            <p class="text-center h4">what do you want to do with this course ? </p>
-
-          </div>
-          <div class="modal-footer d-flex justify-content-center deleteButtonsWrapper">
-            <button type="button" onclick="window.location.href = '/professorDeleteCourse/{{i.CourseID}}/{{i.GroupID}}'" class="btn btn-danger btnYesClass" id="btnYes" data-dismiss="modal">Delete</button>
-              <button type="button" class="btn btn-primary btnNoClass" onclick="window.location.href = '/professorArchiveCourse/{{i.CourseID}}/{{i.GroupID}}'" id="btn" data-dismiss="modal">Archive</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-                    </td>
-                  </tr>
-                 {% endif %}
-                {% endfor %}
-                </tbody>
-              </table>
+<div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"> Simple Table</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                Name
+                                            </th>
+                                            <th>
+                                                Country
+                                            </th>
+                                            <th>
+                                                City
+                                            </th>
+                                            <th class="text-right">
+                                                Salary
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Dakota Rice
+                                                </td>
+                                                <td>
+                                                    Niger
+                                                </td>
+                                                <td>
+                                                    Oud-Turnhout
+                                                </td>
+                                                <td class="text-right">
+                                                    $36,738
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Minerva Hooper
+                                                </td>
+                                                <td>
+                                                    Curaçao
+                                                </td>
+                                                <td>
+                                                    Sinaai-Waas
+                                                </td>
+                                                <td class="text-right">
+                                                    $23,789
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Sage Rodriguez
+                                                </td>
+                                                <td>
+                                                    Netherlands
+                                                </td>
+                                                <td>
+                                                    Baileux
+                                                </td>
+                                                <td class="text-right">
+                                                    $56,142
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Philip Chaney
+                                                </td>
+                                                <td>
+                                                    Korea, South
+                                                </td>
+                                                <td>
+                                                    Overland Park
+                                                </td>
+                                                <td class="text-right">
+                                                    $38,735
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Doris Greene
+                                                </td>
+                                                <td>
+                                                    Malawi
+                                                </td>
+                                                <td>
+                                                    Feldkirchen in Kärnten
+                                                </td>
+                                                <td class="text-right">
+                                                    $63,542
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Mason Porter
+                                                </td>
+                                                <td>
+                                                    Chile
+                                                </td>
+                                                <td>
+                                                    Gloucester
+                                                </td>
+                                                <td class="text-right">
+                                                    $78,615
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Jon Porter
+                                                </td>
+                                                <td>
+                                                    Portugal
+                                                </td>
+                                                <td>
+                                                    Gloucester
+                                                </td>
+                                                <td class="text-right">
+                                                    $98,615
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="card-header">
+                                <h4 class="card-title"> Table on Plain Background</h4>
+                                <p class="category"> Here is a subtitle for this table</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                Name
+                                            </th>
+                                            <th>
+                                                Country
+                                            </th>
+                                            <th>
+                                                City
+                                            </th>
+                                            <th class="text-right">
+                                                Salary
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Dakota Rice
+                                                </td>
+                                                <td>
+                                                    Niger
+                                                </td>
+                                                <td>
+                                                    Oud-Turnhout
+                                                </td>
+                                                <td class="text-right">
+                                                    $36,738
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Minerva Hooper
+                                                </td>
+                                                <td>
+                                                    Curaçao
+                                                </td>
+                                                <td>
+                                                    Sinaai-Waas
+                                                </td>
+                                                <td class="text-right">
+                                                    $23,789
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Sage Rodriguez
+                                                </td>
+                                                <td>
+                                                    Netherlands
+                                                </td>
+                                                <td>
+                                                    Baileux
+                                                </td>
+                                                <td class="text-right">
+                                                    $56,142
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Philip Chaney
+                                                </td>
+                                                <td>
+                                                    Korea, South
+                                                </td>
+                                                <td>
+                                                    Overland Park
+                                                </td>
+                                                <td class="text-right">
+                                                    $38,735
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Doris Greene
+                                                </td>
+                                                <td>
+                                                    Malawi
+                                                </td>
+                                                <td>
+                                                    Feldkirchen in Kärnten
+                                                </td>
+                                                <td class="text-right">
+                                                    $63,542
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Mason Porter
+                                                </td>
+                                                <td>
+                                                    Chile
+                                                </td>
+                                                <td>
+                                                    Gloucester
+                                                </td>
+                                                <td class="text-right">
+                                                    $78,615
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Jon Porter
+                                                </td>
+                                                <td>
+                                                    Portugal
+                                                </td>
+                                                <td>
+                                                    Gloucester
+                                                </td>
+                                                <td class="text-right">
+                                                    $98,615
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-    </div>
-</section>
-
-<!--Modal: modalConfirmDelete-->
 
 {% endblock %}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
